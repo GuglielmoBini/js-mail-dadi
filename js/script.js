@@ -60,3 +60,52 @@ diceButton.addEventListener("click", function () {
 
   winner.innerText = result;
 });
+
+//-----------------------------------------------------------------
+
+// ESERCIZIO 2
+/* STEP
+1- Prendo gli elementi dal DOM
+2- invento una lista di email (array)
+3- tramite form, chiedo all'utente di scrivere una email
+4- aggiungo event listener al bottone
+5- prendo il value della mail
+6- controllo se la mail scritta dall'utente è dentro la mia lista
+7- stampo a schermo se la mail è presente o meno nella mia lista
+*/
+
+// prendo gli elementi dal DOM
+
+const inputEmail = document.getElementById("email");
+const inputCheckButton = document.getElementById("check-button");
+const loginResult = document.getElementById("login-result");
+
+// invento una lista di email
+
+const emailList = [
+  "giacomoleopardi@gmail.com",
+  "dantealighieri@gmail.com",
+  "leonardodavinci@gmail.com",
+  "lorenzodemedici@gmail.com",
+];
+
+// tramite form, chiedo all'utente di scrivere una email (in HTML)
+
+//aggiungo event listener al bottone
+
+inputCheckButton.addEventListener("click", function () {
+  //prendo il value della mail
+  const userEmail = inputEmail.value.trim();
+
+  // controllo se la mail scritta dall'utente è dentro la mia lista
+
+  let resultMessage =
+    "<p>la mail digitata non è presente nella lista, non puoi entrare!</p>";
+
+  for (let i = 0; i < emailList.length; i++) {
+    if (userEmail === emailList[i]) {
+      resultMessage = "<p>La tua email è valida, puoi entrare!</p>";
+    }
+  }
+  loginResult.innerHTML = resultMessage;
+});
